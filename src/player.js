@@ -12,6 +12,9 @@ Player.prototype = {
       if (this.rolls[i] + this.rolls[i+1] == 10) {
         this._score += this.rolls[i+2]
       }
+      if (this.rolls[i] == 10) {
+        this._score += this.rolls[i+3]
+      }
     }
     this._score += this.rolls.reduce(sumArray)
     return this._score

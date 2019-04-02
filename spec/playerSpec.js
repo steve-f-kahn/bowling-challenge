@@ -51,6 +51,17 @@ describe("Player", function(){
       }
       expect(player.score()).toEqual(22)
     })
+
+    it("A player roles a strike and a 8 then gutterballs. The score should be 26", function(){
+      player.addroll(10)
+      player.addroll(0)
+      player.addroll(0)
+      player.addroll(8)
+      for (var i = 0; i < 16; i++) {
+        player.addroll(0)
+      }
+      expect(player.score()).toEqual(26)
+    })
   })
 
 })
