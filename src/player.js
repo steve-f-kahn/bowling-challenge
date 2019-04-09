@@ -3,17 +3,26 @@ function Player(name) {
   this.name = name
   this._score = 0
 }
+
 Player.prototype = {
   addroll: function (roll) {
     this.rolls.push(roll)
   },
   score: function() {
     for (var i = 0; i < this.rolls.length; i+= 2) {
-      if (this.rolls[i] + this.rolls[i+1] == 10) {
-        this._score += this.rolls[i+2]
+      if (i < 18) {
+        if (this.rolls[i] == 10) {
+          this._score += this.rolls[i+2] + this.rolls[i+3]
+        } else if (this.rolls[i] + this.rolls[i+1] == 10) {
+          this._score += this.rolls[i+2]
+        }
       }
-      if (this.rolls[i] == 10) {
-        this._score += this.rolls[i+3]
+      else {
+        if (this.rolls[i] == 10) {
+          this._score += this.rolls[i+2]
+        } else if (this.rolls[i] + this.rolls[i+1] == 10) {
+          this._score += this.rolls[i+2]
+        }
       }
     }
     this._score += this.rolls.reduce(sumArray)
@@ -21,6 +30,6 @@ Player.prototype = {
   }
 }
 
-sumArray = function(total, num){
+  sumArray = function(total, num){
   return total += num
 }

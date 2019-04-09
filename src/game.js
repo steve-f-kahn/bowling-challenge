@@ -5,6 +5,6 @@ function Game() {
 Game.prototype = {
   addplayer: function(name) {
 
-    this.players.push(name)
+    this.players.push(new Player(name))
   }
 }

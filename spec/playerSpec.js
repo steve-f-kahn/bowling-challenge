@@ -62,6 +62,26 @@ describe("Player", function(){
       }
       expect(player.score()).toEqual(26)
     })
+
+    it("Gets a spare on the last roll so gets another roll", function(){
+      for (var i = 0; i < 18; i++) {
+        player.addroll(0)
+      }
+      player.addroll(5)
+      player.addroll(5)
+      player.addroll(9)
+      expect(player.score()).toEqual(28)
+    })
+
+    it("Gets a strike on the last round so gets another roll", function(){
+      for (var i = 0; i < 18; i++) {
+        player.addroll(0)
+      }
+      player.addroll(10)
+      player.addroll(0)
+      player.addroll(9)
+      expect(player.score()).toEqual(28)
+    })
   })
 
 })
